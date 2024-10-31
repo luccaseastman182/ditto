@@ -1,0 +1,57 @@
+/* Styles for Bolt New functionalities */
+
+/* Styles for the file upload form */
+#uploadForm {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+#uploadForm label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+#uploadForm input[type="file"] {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#uploadForm button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#uploadForm button:hover {
+    background-color: #0056b3;
+}
+
+/* Styles for the file display section */
+#uploadedFiles {
+    margin-top: 20px;
+}
+
+#uploadedFiles h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+#fileList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#fileList li {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}

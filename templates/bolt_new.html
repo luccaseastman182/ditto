@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bolt New</title>
+    <link rel="stylesheet" href="/static/css/bolt_new.css">
+</head>
+<body>
+    <h1>Bolt New</h1>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <label for="fileInput">Upload a file:</label>
+        <input type="file" id="fileInput" name="file">
+        <button type="submit">Upload</button>
+    </form>
+    <div id="uploadedFiles">
+        <h2>Uploaded Files</h2>
+        <ul id="fileList"></ul>
+    </div>
+    <script src="/static/js/bolt_new.js"></script>
+</body>
+</html>

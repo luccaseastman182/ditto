@@ -6,6 +6,7 @@ import traceback
 from flask import Flask, Blueprint, request, send_from_directory, render_template_string, jsonify
 from threading import Thread
 from time import sleep
+from flask_socketio import SocketIO, emit
 
 # Correctly import the completion function from LiteLLM
 from litellm import completion, supports_function_calling
@@ -15,6 +16,7 @@ MODEL_NAME = os.environ.get('LITELLM_MODEL', 'gpt-4o')  # Default model; can be 
 
 # Initialize Flask app
 app = Flask(__name__)
+socketio = SocketIO(app)
 
 LOG_FILE = "flask_app_builder_log.json"
 
@@ -458,4 +460,4 @@ def run_main_loop(user_input):
 
 if __name__ == '__main__':
     # Start the Flask app
-    app.run(host='0.0.0.0', port=8080)
+    socketio.run(app, host='0.0.0.0', port=8080)

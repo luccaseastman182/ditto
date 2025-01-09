@@ -12,6 +12,7 @@ Ditto is a user-friendly tool that allows you to generate a multi-file Flask app
 - **Automated Code Generation**: Generates routes, templates, and static files based on your description.
 - **Self-Building Agent**: Automatically plans and constructs the application without the need for manual coding.
 - **Modular Structure**: Organizes code into a clean, modular structure with separate directories for templates, static files, and routes.
+- **Swarm Logic**: Utilizes swarm logic to decompose tasks into agents, assign tasks, facilitate agent communication, validate completed tasks, and add validated files to the IDE.
 
 ## Getting Started
 
@@ -39,7 +40,7 @@ Ditto is a user-friendly tool that allows you to generate a multi-file Flask app
 3. **Install Dependencies**
 
    ```bash
-   pip install litellm
+   pip install -r requirements.txt
    ```
 
 ### Setting the `OPENAI_API_KEY`
@@ -120,6 +121,33 @@ python main.py
 python main.py
 ```
 
+### Using Swarm Logic
+
+Ditto now includes a swarm logic feature to enhance task decomposition and validation. Here's how to use it:
+
+1. **Describe Your Task**
+
+   Provide a detailed description of the task you want to accomplish.
+
+2. **Task Decomposition**
+
+   The system will decompose the task into smaller tasks and create agents to handle each task.
+
+3. **Task Assignment**
+
+   Tasks are assigned to agents, and the agents will work on their respective tasks.
+
+4. **Agent Communication**
+
+   Agents will communicate with each other to ensure tasks are completed efficiently.
+
+5. **Task Validation**
+
+   Completed tasks are validated, and if validated, the files are added to the IDE. If denied, the task is sent back to the agent for rework.
+
+6. **Monitor Progress**
+
+   You can monitor the progress of the tasks and validation status in real-time.
 
 ## Contribution
 

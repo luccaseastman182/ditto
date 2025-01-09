@@ -10,6 +10,9 @@ from time import sleep
 # Correctly import the completion function from LiteLLM
 from litellm import completion, supports_function_calling
 
+# Import the swarm_logic module
+from swarm_logic import SwarmLogic
+
 # Configuration
 MODEL_NAME = os.environ.get('LITELLM_MODEL', 'gpt-4o')  # Default model; can be swapped easily
 
@@ -30,7 +33,8 @@ progress = {
     "iteration": 0,
     "max_iterations": 50,
     "output": "",
-    "completed": False
+    "completed": False,
+    "validation_status": ""
 }
 
 # Ensure directories exist and create __init__.py in routes
@@ -135,6 +139,7 @@ def home():
             progress["iteration"] = 0
             progress["output"] = ""
             progress["completed"] = False
+            progress["validation_status"] = ""
             thread = Thread(target=run_main_loop, args=(user_input,))
             thread.start()
             return render_template_string('''
@@ -323,6 +328,9 @@ def run_main_loop(user_input):
 
     output = ""
 
+    # Initialize SwarmLogic
+    swarm_logic = SwarmLogic()
+
     while iteration < max_iterations:
         progress["iteration"] = iteration + 1
         # Create a new iteration dictionary for each loop
@@ -453,6 +461,13 @@ def run_main_loop(user_input):
 
     progress["completed"] = True
     progress["status"] = "completed"
+
+    # Use swarm logic to process user input
+    validated_tasks = swarm_logic.process_user_input(user_input)
+    if validated_tasks:
+        progress["validation_status"] = "Tasks validated and files added to IDE."
+    else:
+        progress["validation_status"] = "No tasks validated."
 
     return output
 
